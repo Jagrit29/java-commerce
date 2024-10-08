@@ -3,6 +3,7 @@ package com.personalprojects.java_commerce.configuration;
 import com.personalprojects.java_commerce.DB;
 import com.personalprojects.java_commerce.DevDB;
 import com.personalprojects.java_commerce.ProdDB;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
@@ -21,5 +22,10 @@ public class Config {
     @ConditionalOnProperty(name = "project.mode", havingValue = "prod")
     public DB getProdDBBean() {
         return new ProdDB();
+    }
+
+    @Bean
+    public ModelMapper getModelMapper() {
+        return new ModelMapper();
     }
 }
